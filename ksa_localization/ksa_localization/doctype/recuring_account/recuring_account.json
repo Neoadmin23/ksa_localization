@@ -1,0 +1,281 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2024-10-29 10:09:58.591074",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "item_code",
+  "item_name",
+  "supplier",
+  "customer",
+  "column_break_h4il",
+  "naming_series",
+  "location",
+  "employee",
+  "department",
+  "recuring_accounts_section",
+  "recuring_account",
+  "cost_center",
+  "column_break_vvlf",
+  "recuring_expense_account",
+  "project",
+  "section_break_ohsg",
+  "recurring_type",
+  "purchase_details_section",
+  "purchase_receipt",
+  "purchase_invoice",
+  "recurring_date",
+  "recurring_end_date",
+  "column_break_siii",
+  "gross_purchase_amount",
+  "purchase_date",
+  "total_number_of_recuring",
+  "total_number_of_recuring_days",
+  "recuring_amount",
+  "recuring_schedule_section",
+  "schedules",
+  "recurrings",
+  "recurring",
+  "section_break_m2fg",
+  "journal_entries_created",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_h4il",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "REC-ASS-.YYYY.-"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Location"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fieldname": "recuring_accounts_section",
+   "fieldtype": "Section Break",
+   "label": "Recuring Accounts"
+  },
+  {
+   "fieldname": "recuring_account",
+   "fieldtype": "Link",
+   "label": "Recuring Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_vvlf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "recuring_expense_account",
+   "fieldtype": "Link",
+   "label": "Recuring Expense Account",
+   "options": "Account"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "section_break_ohsg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "recurring_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Recurring type",
+   "options": "\nDays\nNumber",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_details_section",
+   "fieldtype": "Section Break",
+   "label": "Purchase Details"
+  },
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "label": "Purchase Receipt",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Purchase Invoice",
+   "options": "Purchase Receipt"
+  },
+  {
+   "fieldname": "recurring_date",
+   "fieldtype": "Date",
+   "label": "Recurring Starting Date"
+  },
+  {
+   "fieldname": "recurring_end_date",
+   "fieldtype": "Date",
+   "label": "Recurring End Date"
+  },
+  {
+   "fieldname": "column_break_siii",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gross_purchase_amount",
+   "fieldtype": "Currency",
+   "label": "Gross Purchase Amount"
+  },
+  {
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date"
+  },
+  {
+   "depends_on": "eval:in_list([\"Number\"], doc.recurring_type) ",
+   "fieldname": "total_number_of_recuring",
+   "fieldtype": "Float",
+   "label": "Total Number of Recuring",
+   "mandatory_depends_on": "eval:in_list([\"Number\"], doc.recurring_type) "
+  },
+  {
+   "depends_on": "eval:in_list([\"Days\"], doc.recurring_type) ",
+   "fieldname": "total_number_of_recuring_days",
+   "fieldtype": "Float",
+   "label": "Total Number of Recuring Days",
+   "mandatory_depends_on": "eval:in_list([\"Days\"], doc.recurring_type) "
+  },
+  {
+   "fieldname": "recuring_amount",
+   "fieldtype": "Currency",
+   "label": "Recuring Amount(Per Days)"
+  },
+  {
+   "fieldname": "recuring_schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Recuring Schedule"
+  },
+  {
+   "depends_on": "eval:in_list([\"Number\"], doc.recurring_type)",
+   "fieldname": "schedules",
+   "fieldtype": "Table",
+   "label": "Recuring Schedule",
+   "options": "Recuring Schedule"
+  },
+  {
+   "fieldname": "recurrings",
+   "fieldtype": "Section Break",
+   "label": "Recurrings"
+  },
+  {
+   "depends_on": "eval:in_list([\"Days\"], doc.recurring_type) ",
+   "fieldname": "recurring",
+   "fieldtype": "Table",
+   "label": "Recurring",
+   "options": "Recurring Table"
+  },
+  {
+   "fieldname": "section_break_m2fg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "journal_entries_created",
+   "fieldtype": "Check",
+   "label": "Journal Entries Created"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Recuring Account",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-10-29 10:46:21.274299",
+ "modified_by": "Administrator",
+ "module": "KSA Localization",
+ "name": "Recuring Account",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

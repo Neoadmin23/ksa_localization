@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "creation": "2024-10-28 09:09:25.124741",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sub_customer",
+  "column_break_mvxo",
+  "territory",
+  "address"
+ ],
+ "fields": [
+  {
+   "fieldname": "sub_customer",
+   "fieldtype": "Link",
+   "label": "Sub Customer",
+   "options": "Sub Customer"
+  },
+  {
+   "fieldname": "column_break_mvxo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "territory",
+   "fieldtype": "Link",
+   "label": "Territory",
+   "options": "Territory"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Territory"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-10-28 09:27:18.607045",
+ "modified_by": "Administrator",
+ "module": "KSA Localization",
+ "name": "Sub Customer Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
