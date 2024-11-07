@@ -130,6 +130,12 @@ app_license = "mit"
 # 	}
 # }
 
+doc_events = {
+	"Salary Slip": {
+		"before_submit": "ksa_localization.api.create_accrued_entries"
+	},	
+}
+
 # Scheduled Tasks
 # ---------------
 
@@ -226,4 +232,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
