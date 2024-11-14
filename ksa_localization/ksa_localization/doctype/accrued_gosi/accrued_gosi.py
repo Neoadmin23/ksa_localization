@@ -21,7 +21,7 @@ class AccruedGosi(Document):
         if basic_salary:
             self.basic = basic_salary
             if nationality == "Saudi":
-                self.monthly_accrued_amount = self.basic * 0.0975
+                self.monthly_accrued_amount = self.basic * 0.1175
             else:
                 self.monthly_accrued_amount = self.basic * 0.02
         else:
