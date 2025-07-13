@@ -1,33 +1,39 @@
-// Copyright (c) 2024, nasiransari97177@gmail.com and contributors
+// Copyright (c) 2025, nasiransari97177@gmail.com and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on('Accrued End of Service', {
-    refresh: function(frm) {
-        calculate_monthly_accrued_amount(frm);
-    },
-    basic: function(frm) {
-        calculate_monthly_accrued_amount(frm);
-    },
-    service_durations: function(frm) {
-        calculate_monthly_accrued_amount(frm);
-    }
-});
-function calculate_monthly_accrued_amount(frm) {
-    const basic = frm.doc.basic || 0; 
-    const service_durations = frm.doc.service_durations || 0; 
-    let monthly_accrued_amount;
+// frappe.ui.form.on("Accrued End of Service", {
+// 	refresh(frm) {
 
-    if (service_durations >= 0 && service_durations <= 60) {
-        monthly_accrued_amount = (basic * 0.50) / 12; 
-    } else if (service_durations > 60) {
-        monthly_accrued_amount = (basic * 1) / 12; 
-    } else {
-        monthly_accrued_amount = 0;
-    }
+// 	},
+// });
+
+// frappe.ui.form.on('Accrued End of Service', {
+//     refresh: function(frm) {
+//         calculate_monthly_accrued_amount(frm);
+//     },
+//     basic: function(frm) {
+//         calculate_monthly_accrued_amount(frm);
+//     },
+//     service_durations: function(frm) {
+//         calculate_monthly_accrued_amount(frm);
+//     }
+// });
+// function calculate_monthly_accrued_amount(frm) {
+//     const basic = frm.doc.basic || 0; 
+//     const service_durations = frm.doc.service_durations || 0; 
+//     let monthly_accrued_amount;
+
+//     if (service_durations >= 0 && service_durations <= 60) {
+//         monthly_accrued_amount = (basic * 0.50) / 12; 
+//     } else if (service_durations > 60) {
+//         monthly_accrued_amount = (basic * 1) / 12; 
+//     } else {
+//         monthly_accrued_amount = 0;
+//     }
 
    
-    frm.set_value('monthly_accrued_amount', monthly_accrued_amount);
-}
+//     frm.set_value('monthly_accrued_amount', monthly_accrued_amount);
+// }
 
 frappe.ui.form.on('Accrued End of Service', {
     date(frm) {
@@ -61,45 +67,45 @@ frappe.ui.form.on('Accrued End of Service', {
     }
 });
 
-frappe.ui.form.on('Accrued End of Service', {
-    on_submit: function(frm) {
-        const gl_entries = [
-            {
-                posting_date: frm.doc.date,               
-                account: frm.doc.payable_account,          
-                credit: frm.doc.monthly_accrued_amount,               
-                credit_in_account_currency: frm.doc.monthly_accrued_amount,
-                party_type: 'Employee',
-                party: frm.doc.employee,
-                voucher_type: 'Accrued End of Service',
-                voucher_no: frm.doc.name,
-                company: frm.doc.company,
-                cost_center: frm.doc.cost_center    
-            },
-            {
-                posting_date: frm.doc.date,
-                account: frm.doc.expense_account,           
-                debit: frm.doc.monthly_accrued_amount,                    
-                debit_in_account_currency: frm.doc.monthly_accrued_amount,
-                party_type: 'Employee',
-                party: frm.doc.employee,
-                company: frm.doc.company,
-                voucher_type: 'Accrued End of Service',
-                voucher_no: frm.doc.name,
-                cost_center: frm.doc.cost_center   
-            }
-        ];
-        gl_entries.forEach(gl_entry => {
-            frappe.db.insert({
-                doctype: 'GL Entry',
-                ...gl_entry
-            }).then((doc) => {
-                frappe.msgprint(__('GL Entry created successfully for Account: {0}', [gl_entry.account]));
-            });
-        });
+// frappe.ui.form.on('Accrued End of Service', {
+//     on_submit: function(frm) {
+//         const gl_entries = [
+//             {
+//                 posting_date: frm.doc.date,               
+//                 account: frm.doc.payable_account,          
+//                 credit: frm.doc.monthly_accrued_amount,               
+//                 credit_in_account_currency: frm.doc.monthly_accrued_amount,
+//                 party_type: 'Employee',
+//                 party: frm.doc.employee,
+//                 voucher_type: 'Accrued End of Service',
+//                 voucher_no: frm.doc.name,
+//                 company: frm.doc.company,
+//                 cost_center: frm.doc.cost_center    
+//             },
+//             {
+//                 posting_date: frm.doc.date,
+//                 account: frm.doc.expense_account,           
+//                 debit: frm.doc.monthly_accrued_amount,                    
+//                 debit_in_account_currency: frm.doc.monthly_accrued_amount,
+//                 party_type: 'Employee',
+//                 party: frm.doc.employee,
+//                 company: frm.doc.company,
+//                 voucher_type: 'Accrued End of Service',
+//                 voucher_no: frm.doc.name,
+//                 cost_center: frm.doc.cost_center   
+//             }
+//         ];
+//         gl_entries.forEach(gl_entry => {
+//             frappe.db.insert({
+//                 doctype: 'GL Entry',
+//                 ...gl_entry
+//             }).then((doc) => {
+//                 frappe.msgprint(__('GL Entry created successfully for Account: {0}', [gl_entry.account]));
+//             });
+//         });
         
-    }
-});
+//     }
+// });
 frappe.ui.form.on('Accrued End of Service', {
     refresh: function(frm) {
          if (frm.doc.docstatus === 1) {
