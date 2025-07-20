@@ -1663,10 +1663,10 @@ class SalesReturn(SellingController):
 		self.set_serial_no_against_delivery_note()
 		self.validate_serial_against_delivery_note()
 
-	def set_serial_no_against_delivery_note(self):
-		for item in self.items:
-			if item.serial_no and item.delivery_note and item.qty != len(get_serial_nos(item.serial_no)):
-				item.serial_no = get_delivery_note_serial_no(item.item_code, item.qty, item.delivery_note)
+	# def set_serial_no_against_delivery_note(self):
+	# 	for item in self.items:
+	# 		if item.serial_no and item.delivery_note and item.qty != len(get_serial_nos(item.serial_no)):
+	# 			item.serial_no = get_delivery_note_serial_no(item.item_code, item.qty, item.delivery_note)
 
 	def validate_serial_against_delivery_note(self):
 		"""
