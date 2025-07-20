@@ -1494,7 +1494,7 @@
    "name": "Employee-custom_nationality",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "Nationality",
+   "options": "Country",
    "owner": "Administrator",
    "permlevel": 0,
    "precision": "",
